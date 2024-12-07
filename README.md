@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Blood Bank Using MERN
 
 Blood Bank is a web application developed using the MERN (MongoDB, Express.js, React, Node.js) stack. It allows users to manage blood donation activities, catering to different roles such as admin, donor, hospital, and organization.
@@ -66,3 +67,6 @@ The React app will be accessible at http://localhost:3000.
 ![Alt text](screenshots/blood.png "1")
 ![Alt text](screenshots/blood1.png "2")
 ![Alt text](screenshots/blood2.png "3")
+=======
+# Mini
+>>>>>>> 3eabfe867bb4dfb9ec52ee17cc1ab6dd39170bef
