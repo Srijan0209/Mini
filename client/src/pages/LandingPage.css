@@ -1,0 +1,527 @@
+/* /* LandingPage.css
+
+/* General Styling */
+.landing-page {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #4b6cb7, #182848);
+    min-height: 100vh;
+    color: white;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Header */
+  .landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .landing-header .logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .login-button {
+    background-color: #34d399; /* Green */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #10b981; /* Darker Green */
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    background-color: #fbbf24; /* Yellow */
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border-radius: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #f59e0b; /* Darker Yellow */
+  }
+  
+  /* Disease Prediction Section */
+  .predict-section {
+    padding: 3rem 2rem;
+    background-color: #ffffff;
+    color: black;
+  }
+  
+  .symptoms-selection {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 1.5rem;
+  }
+  
+  .symptoms-selection h4 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  
+  .symptoms-selection .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .checkbox {
+    accent-color: #3b82f6; /* Tailwind's blue-500 */
+  }
+  
+  button {
+    font-size: 1.125rem;
+    padding: 0.75rem 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    background-color: #a3a3a3; /* Gray */
+    cursor: not-allowed;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #3b82f6; /* Blue */
+  }
+  
+  /* Prediction Result */
+  .prediction-result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .prediction-result h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .prediction-result p {
+    font-size: 1.25rem;
+    color: #2d3748; /* Dark Gray */
+  }
+  
+  /* About Section */
+  .about-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    background-color: #f9fafb;
+  }
+  
+  .about-section h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-section p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #4a5568; /* Gray text */
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 5rem 2rem;
+    background-color: #f9fafb;
+  }
+  
+  .feature-card {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 30%;
+  }
+  
+  .feature-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+  }
+  
+  .feature-card h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card p {
+    font-size: 1.125rem;
+    color: #4a5568; /* Dark Gray */
+  }
+  
+  .features-section .feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  /* AI Chatbot Section */
+  .chatbot-section {
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  
+  .chatbot-section h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .chatbot-section p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .chatbot-placeholder {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+  }
+  
+  .chatbot-placeholder h4 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #1a202c; /* Darker Blue */
+    padding: 2rem 0;
+    color: white;
+  }
+  
+  .footer p {
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+  }  */
+  /* LandingPage.css */
+  
+  /* General Styling */
+  .landing-page {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #4b6cb7, #182848);
+    min-height: 100vh;
+    color: white;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Header */
+  .landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  
+  .landing-header .logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .login-button {
+    background-color: #34d399; /* Green */
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: #10b981; /* Darker Green */
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    text-align: center;
+    padding: 6rem 2rem;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .hero-text {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cta-button {
+    background-color: #fbbf24; /* Yellow */
+    color: white;
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+    border-radius: 1.5rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .cta-button:hover {
+    background-color: #f59e0b; /* Darker Yellow */
+  }
+  
+  /* Disease Prediction Section */
+  .predict-section {
+    padding: 3rem 2rem;
+    background-color: #ffffff;
+    color: black;
+  }
+  
+  .symptoms-selection {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 1.5rem;
+  }
+  
+  .symptoms-selection h4 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  
+  .symptoms-selection .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .checkbox {
+    accent-color: #3b82f6; /* Tailwind's blue-500 */
+  }
+  
+  button {
+    font-size: 1.125rem;
+    padding: 0.75rem 2rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    background-color: #a3a3a3; /* Gray */
+    cursor: not-allowed;
+  }
+  
+  button:hover:not(:disabled) {
+    background-color: #3b82f6; /* Blue */
+  }
+  
+  /* Prediction Result */
+  .prediction-result {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .prediction-result h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .prediction-result p {
+    font-size: 1.25rem;
+    color: #2d3748; /* Dark Gray */
+  }
+  
+  /* About Section */
+  .about-section {
+    padding: 5rem 2rem;
+    text-align: center;
+    background-color: #f9fafb;
+  }
+  
+  .about-section h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .about-section p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #4a5568; /* Gray text */
+  }
+  
+  /* Features Section */
+  .features-section {
+    padding: 5rem 2rem;
+    background-color: #f9fafb;
+  }
+  
+  .feature-card {
+    padding: 2rem;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 30%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .feature-card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+    border-radius: 1rem;
+  }
+  
+  .feature-card h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .feature-card p {
+    font-size: 1.125rem;
+    color: #4a5568; /* Dark Gray */
+  }
+  
+  .features-section .feature-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  
+  /* AI Chatbot Section */
+  .chatbot-section {
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  
+  .chatbot-section h3 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  
+  .chatbot-section p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  
+  .chatbot-placeholder {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+  }
+  
+  .chatbot-placeholder h4 {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+  
+  /* Footer */
+  .footer {
+    background-color: #1a202c; /* Darker Blue */
+    padding: 2rem 0;
+    color: white;
+  }
+  
+  .footer p {
+    font-size: 1rem;
+    text-align: center;
+    margin: 0;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .landing-header {
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+    }
+  
+    .login-button {
+      margin-top: 1rem;
+    }
+  
+    .hero-title {
+      font-size: 2.5rem;
+    }
+  
+    .cta-button {
+      font-size: 1.125rem;
+      padding: 0.75rem 1.5rem;
+    }
+  
+    .predict-section {
+      padding: 2rem 1rem;
+    }
+  
+    .symptoms-selection .grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .feature-card {
+      width: 100%;
+    }
+  
+    .features-section .feature-cards {
+      flex-direction: column;
+    }
+  }
