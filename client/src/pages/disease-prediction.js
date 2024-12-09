@@ -1,95 +1,97 @@
-import { useState, useEffect } from 'react';
-import './disease-prediction.css';
+import React, { useState } from 'react';
+import axios from 'axios';
+import './disease-prediction.css'; // Import the CSS for styling
 
-export default function DiseasePrediction() {
+const DiseasePredictionPage = () => {
+  const symptoms = [
+    'itching', 'continuous_sneezing', 'shivering', 'joint_pain',
+    'stomach_pain', 'vomiting', 'fatigue', 'weight_loss', 'restlessness',
+    'lethargy', 'high_fever', 'headache', 'dark_urine', 'nausea',
+    'pain_behind_the_eyes', 'constipation', 'abdominal_pain', 'diarrhoea',
+    'mild_fever', 'yellowing_of_eyes', 'malaise', 'phlegm', 'congestion',
+    'chest_pain', 'fast_heart_rate', 'neck_pain', 'dizziness',
+    'puffy_face_and_eyes', 'knee_pain', 'muscle_weakness',
+    'passage_of_gases', 'irritability', 'muscle_pain', 'belly_pain',
+    'abnormal_menstruation', 'increased_appetite', 'lack_of_concentration',
+    'visual_disturbances', 'receiving_blood_transfusion', 'coma',
+    'history_of_alcohol_consumption', 'blood_in_sputum', 'palpitations',
+    'inflammatory_nails', 'yellow_crust_ooze'
+  ];
+
   const [selectedSymptoms, setSelectedSymptoms] = useState([]);
-  const [predictionResult, setPredictionResult] = useState(null);
+  const [prediction, setPrediction] = useState('');
+  const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  // Symptoms list should match what is used in the backend
-  const symptomsList = ['Fever', 'Cough', 'Fatigue', 'Headache', 'Body Pain']; // Example symptoms
-
-  // Handle checkbox changes for symptom selection
-  const handleCheckboxChange = (e) => {
+  const handleChange = (e) => {
     const { value, checked } = e.target;
-    if (checked) {
-      setSelectedSymptoms([...selectedSymptoms, value]);
-    } else {
-      setSelectedSymptoms(selectedSymptoms.filter((symptom) => symptom !== value));
-    }
+    setSelectedSymptoms(prev => 
+      checked ? [...prev, value] : prev.filter(symptom => symptom !== value)
+    );
   };
 
-  // Clear previous prediction when symptoms change
-  useEffect(() => {
-    setPredictionResult(null);
-  }, [selectedSymptoms]);
-
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setPrediction('');
+    setError('');
+    setLoading(true);
 
     if (selectedSymptoms.length === 0) {
-      setPredictionResult('Please select at least one symptom.');
+      setError('Please select at least one symptom.');
+      setLoading(false);
       return;
     }
 
-    setLoading(true);
-
     try {
-      // Send a POST request to the Flask API with selected symptoms
-      const response = await fetch('http://localhost:5000/predict', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ symptoms: selectedSymptoms }),
+      const response = await axios.post('http://127.0.0.1:5000/predict', {
+        symptoms: selectedSymptoms,
       });
-
-      if (response.ok) {
-        const data = await response.json();
-        setLoading(false);
-        setPredictionResult(`Predicted Disease: ${data.disease}`); // Display predicted disease
-      } else {
-        setLoading(false);
-        setPredictionResult('Error: Could not fetch prediction');
-      }
-    } catch (error) {
-      setLoading(false);
-      setPredictionResult('Error: Something went wrong');
+      setPrediction(response.data.prediction);
+    } catch (err) {
+      setError('Error predicting disease. Please try again later.');
     }
+    setLoading(false);
   };
 
   return (
     <div className="disease-prediction-container">
       <h1 className="heading">Disease Prediction</h1>
-      <p className="subheading">Select symptoms to predict the disease</p>
-
       <form onSubmit={handleSubmit}>
+        <h2 className="subheading">Select Symptoms</h2>
         <div className="symptoms-selection">
-          {symptomsList.map((symptom, index) => (
-            <div key={index} className="checkbox-container">
+          {symptoms.map(symptom => (
+            <div key={symptom} className="checkbox-container">
               <input
                 type="checkbox"
                 id={symptom}
                 value={symptom}
-                onChange={handleCheckboxChange}
+                onChange={handleChange}
               />
-              <label htmlFor={symptom}>{symptom}</label>
+              <label htmlFor={symptom} style={{ marginLeft: '8px' }}>{symptom}</label>
             </div>
           ))}
         </div>
-
-        <button type="submit" disabled={loading || selectedSymptoms.length === 0}>
+        <button type="submit" disabled={loading}>
           {loading ? 'Predicting...' : 'Predict Disease'}
         </button>
       </form>
 
-      {predictionResult && (
-        <div className="prediction-result">
-          <h4>Prediction Result</h4>
-          <p>{predictionResult}</p>
-        </div>
-      )}
+      {/* Display prediction result or error message */}
+      <div className="prediction-output">
+        {error && (
+          <div className="error">
+            <p>{error}</p>
+          </div>
+        )}
+        {prediction && (
+          <div className="prediction-result">
+            <h2>Prediction Result</h2>
+            <p>The probable disease is: <strong>{prediction}</strong></p>
+          </div>
+        )}
+      </div>
     </div>
   );
-}
+};
+
+export default DiseasePredictionPage;
